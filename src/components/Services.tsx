@@ -61,8 +61,9 @@ const itemVariants = {
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 relative">
+    <section id="services" className="py-16 sm:py-24 relative">
       <div className="absolute inset-0 bg-hero-gradient" />
+      <div className="absolute inset-0 grid-overlay opacity-60" />
       
       <div className="container mx-auto px-6 relative">
         {/* Section Header */}
@@ -87,16 +88,16 @@ const Services = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
         >
           {services.map((service) => (
             <motion.div
               key={service.title}
               variants={itemVariants}
-              className="group glass rounded-2xl p-8 card-hover cursor-pointer"
+              className="group glass neon-border rounded-2xl p-6 sm:p-8 card-hover cursor-pointer"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-7 h-7 text-primary" />
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors group-hover:scale-110 duration-300">
+                <service.icon className="w-7 h-7 text-primary group-hover:text-neon-cyan transition-colors" />
               </div>
               
               <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">

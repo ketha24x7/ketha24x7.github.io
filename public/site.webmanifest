@@ -1,0 +1,11 @@
+{
+  "name": "Ketha24 — Next-Gen IT Solutions",
+  "short_name": "Ketha24",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#050614",
+  "background_color": "#050614",
+  "display": "standalone"
+}

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
-import logo from '@/assets/ketha24-logo.png';
+import logo from '@/assets/full_logo.png';
 
 const footerLinks = {
   services: [
@@ -28,11 +28,11 @@ const Footer = () => {
   return (
     <footer className="bg-secondary/30 border-t border-border">
       <div className="container mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-12">
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <a href="#" className="inline-block">
-              <img src={logo} alt="Ketha24" className="h-10 w-auto" />
+              <img src={logo} alt="Ketha24" className="h-11 w-auto" />
             </a>
             <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
               Transforming businesses through innovative technology solutions. 
@@ -83,7 +83,7 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                  className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-neon-cyan hover:bg-primary/10 hover:shadow-[0_0_18px_hsl(var(--neon-cyan)/0.4)] transition-all"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />

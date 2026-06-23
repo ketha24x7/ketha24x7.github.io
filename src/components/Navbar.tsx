@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '@/assets/ketha24-logo.png';
+import logo from '@/assets/full_logo.png';
 
 const navLinks = [
   { name: 'Services', href: '#services' },
@@ -32,7 +32,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center">
-          <img src={logo} alt="Ketha24" className="h-10 w-auto" />
+          <img src={logo} alt="Ketha24" className="h-9 sm:h-11 w-auto" />
         </a>
 
         {/* Desktop Navigation */}
@@ -48,7 +48,7 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
-            className="px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover-glow hover:bg-primary/90 transition-all"
+            className="neon-border px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover-glow hover:bg-primary/90 transition-all"
           >
             Get a Quote
           </a>

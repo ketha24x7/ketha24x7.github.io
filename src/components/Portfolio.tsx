@@ -50,8 +50,9 @@ const itemVariants = {
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" className="py-24 bg-secondary/30">
-      <div className="container mx-auto px-6">
+    <section id="portfolio" className="py-16 sm:py-24 bg-secondary/30 relative">
+      <div className="absolute inset-0 grid-overlay opacity-30" />
+      <div className="container mx-auto px-6 relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -74,13 +75,13 @@ const Portfolio = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid lg:grid-cols-3 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           {projects.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className="group relative glass rounded-2xl overflow-hidden card-hover"
+              className="group relative glass neon-border rounded-2xl overflow-hidden card-hover"
             >
               {/* Gradient Header */}
               <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>

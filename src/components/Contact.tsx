@@ -24,7 +24,7 @@ const contactInfo = [
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-16 sm:py-24 relative">
       {/* Background Accents */}
       <div className="absolute left-0 bottom-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute right-0 top-0 w-64 h-64 bg-glow-secondary/5 rounded-full blur-3xl" />
@@ -53,7 +53,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="glass-strong rounded-2xl p-8 md:p-12 glow-border"
+            className="glass-strong neon-border rounded-2xl p-6 sm:p-8 md:p-12 glow-border"
           >
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               {contactInfo.map((item, index) => (
