@@ -4,9 +4,9 @@ import AnimatedBackground from './AnimatedBackground';
 import GameArcade from './GameArcade';
 
 const stats = [
-  { value: '150+', label: 'Projects Delivered' },
-  { value: '50+', label: 'Happy Clients' },
-  { value: '10+', label: 'Years Experience' },
+  { value: '50+', label: 'Projects Delivered' },
+  { value: '40+', label: 'Happy Clients' },
+  { value: '5+', label: 'Years Experience' },
 ];
 
 const Hero = () => {
@@ -56,8 +56,10 @@ const Hero = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-10"
             >
-              We engineer cutting-edge web platforms, mobile apps, and cloud systems
-              that drive growth and deliver experiences from the future.
+              We engineer the future of digital interaction. By blending robust web, mobile, 
+              and cloud architecture with powerful, scalable AI solutions—whether 
+              building new systems or enhancing existing ones—we help your business lead 
+              the next wave of innovation.
             </motion.p>
 
             <motion.div

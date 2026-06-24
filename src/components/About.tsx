@@ -15,7 +15,7 @@ const highlights = [
   {
     icon: Award,
     title: 'Proven Results',
-    description: '150+ successful projects delivered across various industries.',
+    description: '50+ successful projects delivered across various industries.',
   },
 ];
 

@@ -18,9 +18,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Github, href: '#', label: 'GitHub' },
+  // { icon: Github, href: '#', label: 'GitHub' },
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
+  // { icon: Twitter, href: '#', label: 'Twitter' },
   { icon: Instagram, href: '#', label: 'Instagram' },
 ];
 

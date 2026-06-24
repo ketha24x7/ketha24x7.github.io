@@ -1,7 +1,9 @@
 const techs = [
-  'React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Azure',
-  'Docker', 'Kubernetes', 'GraphQL', 'PostgreSQL', 'React Native', 'Flutter',
-  'TensorFlow', 'Rust', 'Go', 'Redis', 'Terraform',
+  "React", "Next.js", "Angular", "TypeScript", "Node.js", "Python", 
+  "NestJS", "FastAPI", "AWS", "Azure", "Docker", "Kubernetes", 
+  "GraphQL", "PostgreSQL", "MySQL", "MariaDB", "React Native", 
+  "Flutter", "TensorFlow", "Rust", "Go", "Redis", "Terraform", 
+  "Tailwind CSS", "Supabase"
 ];
 
 const TechMarquee = () => {

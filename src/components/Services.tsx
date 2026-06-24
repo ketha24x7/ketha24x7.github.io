@@ -12,7 +12,7 @@ const services = [
     icon: Smartphone,
     title: 'Mobile Apps',
     description: 'Native and cross-platform mobile applications for iOS and Android with stunning UI/UX.',
-    features: ['iOS Development', 'Android Apps', 'React Native'],
+    features: ['iOS Development', 'Android Apps'],
   },
   {
     icon: Cloud,
@@ -22,9 +22,9 @@ const services = [
   },
   {
     icon: Code,
-    title: 'Custom Software',
-    description: 'Tailored software solutions designed to automate processes and solve unique business challenges.',
-    features: ['Automation', 'Integration', 'APIs'],
+    title: 'AI Driven Solutions',
+    description: 'Leverage cutting-edge AI and machine learning to automate workflows, enhance decision-making, and drive competitive advantage.',
+    features: ['ML Pipelines', 'Generative AI', 'Automation'],
   },
   {
     icon: Database,
