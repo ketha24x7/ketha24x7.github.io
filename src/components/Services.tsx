@@ -1,126 +1,44 @@
-import { motion } from 'framer-motion';
-import { Globe, Smartphone, Cloud, Code, Database, Shield } from 'lucide-react';
-
-const services = [
-  {
-    icon: Globe,
-    title: 'Web Solutions',
-    description: 'Custom web platforms, progressive web apps, and enterprise-grade e-commerce solutions built for scale.',
-    features: ['Custom Platforms', 'E-commerce', 'PWAs'],
-  },
-  {
-    icon: Smartphone,
-    title: 'Mobile Apps',
-    description: 'Native and cross-platform mobile applications for iOS and Android with stunning UI/UX.',
-    features: ['iOS Development', 'Android Apps'],
-  },
-  {
-    icon: Cloud,
-    title: 'Cloud & IT Strategy',
-    description: 'Cloud infrastructure setup, migration services, and strategic IT consulting for your business.',
-    features: ['AWS/Azure/GCP', 'DevOps', 'Consulting'],
-  },
-  {
-    icon: Code,
-    title: 'AI Driven Solutions',
-    description: 'Leverage cutting-edge AI and machine learning to automate workflows, enhance decision-making, and drive competitive advantage.',
-    features: ['ML Pipelines', 'Generative AI', 'Automation'],
-  },
-  {
-    icon: Database,
-    title: 'Data Solutions',
-    description: 'Data architecture, analytics pipelines, and business intelligence dashboards.',
-    features: ['Analytics', 'BI Dashboards', 'Data Engineering'],
-  },
-  {
-    icon: Shield,
-    title: 'Cybersecurity',
-    description: 'Comprehensive security audits, penetration testing, and compliance solutions.',
-    features: ['Security Audits', 'Compliance', 'Monitoring'],
-  },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
+import { services } from '@/data/site';
+import SectionHead from './SectionHead';
 
 const Services = () => {
   return (
-    <section id="services" className="py-16 sm:py-24 relative">
-      <div className="absolute inset-0 bg-hero-gradient" />
-      <div className="absolute inset-0 grid-overlay opacity-60" />
-      
-      <div className="container mx-auto px-6 relative">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Our <span className="gradient-text">Services</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Comprehensive IT solutions tailored to accelerate your digital transformation
-          </p>
-        </motion.div>
+    <section id="services" className="py-[clamp(64px,9vw,120px)]">
+      <div className="container">
+        <SectionHead
+          eyebrow="What we do"
+          title={
+            <>
+              Six ways we
+              <br />
+              move you forward
+            </>
+          }
+          intro="Complete IT solutions shaped around your business, from the first website to the data and AI systems that run behind it."
+        />
 
-        {/* Services Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
-        >
-          {services.map((service) => (
-            <motion.div
-              key={service.title}
-              variants={itemVariants}
-              className="group glass neon-border rounded-2xl p-6 sm:p-8 card-hover cursor-pointer"
+        <div className="grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
+          {services.map(({ id, icon: Icon, title, description, features }) => (
+            <article
+              key={id}
+              id={`svc-${id}`}
+              className="flex min-w-0 scroll-mt-24 flex-col gap-3.5 border-b border-r border-line bg-ground px-7 pb-[30px] pt-8 transition-colors hover:bg-paper target:bg-paper"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors group-hover:scale-110 duration-300">
-                <service.icon className="w-7 h-7 text-primary group-hover:text-neon-cyan transition-colors" />
+              <div className="grid h-11 w-11 place-items-center rounded-[10px] bg-brand-tint text-brand">
+                <Icon className="h-[22px] w-[22px]" strokeWidth={1.8} />
               </div>
-              
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2">
-                {service.features.map((feature) => (
-                  <span
-                    key={feature}
-                    className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground"
-                  >
-                    {feature}
-                  </span>
+              <h3 className="display mt-2 text-[32px] leading-none">{title}</h3>
+              <p className="text-base text-muted-foreground">{description}</p>
+              <ul className="mt-auto flex flex-wrap gap-1.5 pt-2">
+                {features.map((f) => (
+                  <li key={f} className="rounded border border-line bg-paper px-2.5 py-1 font-mono text-xs">
+                    {f}
+                  </li>
                 ))}
-              </div>
-            </motion.div>
+              </ul>
+            </article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

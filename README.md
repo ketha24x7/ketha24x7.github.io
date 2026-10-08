@@ -1,6 +1,8 @@
 # Ketha24 — Next-Gen IT Solutions
 
-The official marketing site for Ketha24. Built as a fast, futuristic single-page experience with interactive hero games.
+The official marketing site for Ketha24: a fast, light single-page site covering our services, process, about and contact.
+
+Company details (email, phone, social links, legal pages) live in `src/data/site.ts`. Links left empty there are hidden on the site.
 
 ## Tech stack
 

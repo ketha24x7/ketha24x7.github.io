@@ -1,113 +1,51 @@
-import { motion } from 'framer-motion';
-import { CheckCircle, Users, Zap, Award } from 'lucide-react';
-
-const highlights = [
-  {
-    icon: Users,
-    title: 'Expert Team',
-    description: 'Skilled developers, designers, and strategists dedicated to your success.',
-  },
-  {
-    icon: Zap,
-    title: 'Agile Approach',
-    description: 'Rapid iterations and continuous delivery for faster time-to-market.',
-  },
-  {
-    icon: Award,
-    title: 'Proven Results',
-    description: '50+ successful projects delivered across various industries.',
-  },
-];
-
-const values = [
-  'Innovation-driven solutions',
-  'Client-centric approach',
-  'Transparent communication',
-  'Quality-first development',
-  'Continuous improvement',
-  'Long-term partnerships',
-];
+import { Check } from 'lucide-react';
+import { highlights, values } from '@/data/site';
 
 const About = () => {
   return (
-    <section id="about" className="py-16 sm:py-24 relative overflow-hidden">
-      {/* Background Accent */}
-      <div className="absolute right-0 top-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-6 relative">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              About <span className="gradient-text">Ketha24</span>
-            </h2>
-            
-            <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              Founded with a vision to democratize technology, Ketha24 has evolved into a 
-              leading IT solutions provider. We combine technical excellence with creative 
-              thinking to deliver solutions that not only meet but exceed expectations.
+    <section id="about" className="py-[clamp(64px,9vw,120px)]">
+      <div className="container grid gap-[clamp(32px,6vw,80px)] lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="min-w-0">
+          <p className="eyebrow">About Ketha24</p>
+          <h2 className="display mt-4 text-[clamp(44px,6vw,76px)]">
+            Technology for
+            <br />
+            every business
+          </h2>
+          <div className="mt-7 grid max-w-[60ch] gap-4 text-lg text-muted-foreground">
+            <p>
+              Ketha24 was founded with a vision to <strong className="font-semibold text-ink">democratize technology</strong>.
+              We combine technical excellence with creative thinking to deliver solutions that meet and exceed
+              expectations.
             </p>
-            
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Our journey spans over a decade of innovation, during which we've partnered 
-              with startups and enterprises alike, helping them navigate the digital landscape 
-              and achieve transformative growth.
-            </p>
+            <p>We partner with startups and enterprises alike, helping them navigate the digital landscape and grow.</p>
+          </div>
 
-            {/* Values Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {values.map((value, index) => (
-                <motion.div
-                  key={value}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-center gap-3"
-                >
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-foreground">{value}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right Content - Highlights */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="space-y-6"
-          >
-            {highlights.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="glass neon-border rounded-2xl p-6 card-hover"
-              >
-                <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+          <ul className="mt-8 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+            {values.map((v) => (
+              <li key={v} className="flex items-center gap-2.5 text-base font-medium">
+                <span className="grid h-[18px] w-[18px] flex-none place-items-center rounded-full bg-brand-tint text-brand">
+                  <Check className="h-3 w-3" strokeWidth={3} />
+                </span>
+                {v}
+              </li>
             ))}
-          </motion.div>
+          </ul>
+        </div>
+
+        <div className="grid content-start gap-3.5">
+          {highlights.map((h) => (
+            <div
+              key={h.title}
+              className="grid grid-cols-[auto_1fr] items-start gap-x-[18px] gap-y-1.5 rounded-xl border border-line bg-paper p-6"
+            >
+              <div className="row-span-2 min-w-[108px] font-display text-4xl font-extrabold uppercase leading-[0.95] text-brand">
+                {h.key}
+              </div>
+              <h3 className="text-lg font-semibold">{h.title}</h3>
+              <p className="text-[15px] text-muted-foreground">{h.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,100 +1,73 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import logo from '@/assets/full_logo.png';
+import Logo from './Logo';
 
 const navLinks = [
   { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
+  { name: 'Process', href: '#process' },
   { name: 'About', href: '#about' },
   { name: 'Contact', href: '#contact' },
 ];
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [open, setOpen] = useState(false);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass py-4' : 'py-6'
-      }`}
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="flex items-center">
-          <img src={logo} alt="Ketha24" className="h-9 sm:h-11 w-auto" />
+    <header className="sticky top-0 z-50 border-b border-line bg-ground/85 backdrop-blur-md">
+      <div className="container flex h-[68px] items-center justify-between gap-5">
+        <a href="#top" aria-label="Ketha24 home" className="flex items-center">
+          <Logo className="h-6" />
         </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Main">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
+              className="text-[15px] font-medium text-muted-foreground transition-colors hover:text-ink"
             >
               {link.name}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="neon-border px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover-glow hover:bg-primary/90 transition-all"
-          >
-            Get a Quote
-          </a>
-        </div>
+        </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 text-foreground"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <a href="#contact" className="btn-primary hidden px-4 py-3 text-sm sm:inline-flex">
+            Get a quote
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen(!open)}
+            className="rounded-md p-2 text-ink md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong mt-2 mx-4 rounded-xl overflow-hidden"
-          >
-            <div className="p-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground hover:text-primary transition-colors py-2 text-lg font-medium"
-                >
-                  {link.name}
-                </a>
-              ))}
+      {open && (
+        <nav id="mobile-menu" className="border-t border-line bg-paper md:hidden" aria-label="Mobile">
+          <div className="container flex flex-col gap-1 py-4">
+            {navLinks.map((link) => (
               <a
-                href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="px-5 py-3 bg-primary text-primary-foreground rounded-lg font-medium text-center mt-2"
+                key={link.name}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="py-2.5 text-lg font-medium text-ink"
               >
-                Get a Quote
+                {link.name}
               </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+            ))}
+            <a href="#contact" onClick={() => setOpen(false)} className="btn-primary mt-3 justify-center">
+              Get a quote
+            </a>
+          </div>
+        </nav>
+      )}
+    </header>
   );
 };
 
