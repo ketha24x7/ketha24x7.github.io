@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
+import { Building2 } from 'lucide-react';
 import { projectCategories, projects } from '@/data/site';
+import { cn } from '@/lib/utils';
 import SectionHead from './SectionHead';
 import Reveal from './Reveal';
 
@@ -20,21 +22,25 @@ const Work = () => {
   );
 
   return (
-    <section id="work" className="border-y border-line bg-paper py-[clamp(64px,9vw,120px)]">
-      <div className="container">
+    <section id="work" className="relative overflow-hidden border-y border-line bg-paper py-[clamp(72px,9vw,128px)]">
+      <div className="aurora pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
+
+      <div className="container relative">
         <SectionHead
           eyebrow="Selected work"
           title={
             <>
-              Systems running
-              <br />
-              <span className="text-brand">real businesses</span>
+              Systems running <span className="text-gradient">real businesses</span>
             </>
           }
           intro="Factories, service centres, classrooms and storefronts. Most of what we build is the unglamorous operational software a business runs on every day."
         />
 
-        <div className="mb-10 flex flex-wrap gap-2" role="group" aria-label="Filter projects by category">
+        <div
+          className="mb-10 inline-flex flex-wrap gap-1.5 rounded-2xl border border-line bg-ground/80 p-1.5 backdrop-blur"
+          role="group"
+          aria-label="Filter projects by category"
+        >
           {projectCategories.map((cat) => {
             const isActive = cat === active;
             return (
@@ -43,11 +49,12 @@ const Work = () => {
                 type="button"
                 onClick={() => setActive(cat)}
                 aria-pressed={isActive}
-                className={`rounded-full border px-4 py-2.5 text-sm font-medium transition-colors ${
+                className={cn(
+                  'rounded-xl px-4 py-2.5 text-sm font-semibold transition-all',
                   isActive
-                    ? 'border-ink bg-ink text-paper'
-                    : 'border-line bg-ground text-muted-foreground hover:border-ink hover:text-ink'
-                }`}
+                    ? 'bg-paper text-brand-ink shadow-[0_4px_14px_-6px_rgba(15,23,60,0.3)] ring-1 ring-line'
+                    : 'text-muted-foreground hover:text-ink',
+                )}
               >
                 {cat}
               </button>
@@ -60,41 +67,48 @@ const Work = () => {
           {active === 'All' ? '' : ` in ${active}`}.
         </p>
 
-        <ul className="grid gap-x-7 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {shown.map(({ slug, category, title, client, summary, capabilities, image }, i) => (
             <li key={slug} className="h-full">
               <Reveal delay={(i % 3) * 80} className="h-full">
-              <article className="group flex h-full min-w-0 flex-col">
-                <div className="overflow-hidden rounded-xl border border-line bg-ground">
-                  <img
-                    src={image}
-                    alt=""
-                    width={1600}
-                    height={900}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                  />
-                </div>
+                <article className="card-glow group flex h-full min-w-0 flex-col rounded-3xl border border-line bg-paper p-2.5 shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1.5 hover:border-transparent hover:shadow-[0_24px_60px_-28px_rgba(15,23,60,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                  <div className="relative overflow-hidden rounded-[18px] bg-ground">
+                    <img
+                      src={image}
+                      alt=""
+                      width={1600}
+                      height={900}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.05] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                    />
+                    <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-3 py-1 text-xs font-semibold text-ink shadow-sm backdrop-blur">
+                      {category}
+                    </span>
+                  </div>
 
-                <p className="eyebrow mt-6">{category}</p>
+                  <div className="flex flex-1 flex-col px-4 pb-4 pt-5">
+                    <p className="inline-flex items-center gap-1.5 text-[13px] font-medium text-brand-ink">
+                      <Building2 className="h-3.5 w-3.5" aria-hidden="true" />
+                      {client}
+                    </p>
 
-                <h3 className="display mt-3 text-[28px] leading-[0.97]">{title}</h3>
+                    <h3 className="display mt-2 text-[21px] leading-[1.15]">{title}</h3>
 
-                <p className="mt-2 font-mono text-[12.5px] uppercase tracking-[0.06em] text-muted-foreground">
-                  {client}
-                </p>
+                    <p className="mt-3 text-[14.5px] text-muted-foreground">{summary}</p>
 
-                <p className="mt-3.5 text-[15px] text-muted-foreground">{summary}</p>
-
-                <ul className="mt-auto flex flex-wrap gap-1.5 pt-6">
-                  {capabilities.map((c) => (
-                    <li key={c} className="rounded border border-line bg-ground px-2.5 py-1 font-mono text-xs">
-                      {c}
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                    <ul className="mt-auto flex flex-wrap gap-1.5 pt-5">
+                      {capabilities.map((c) => (
+                        <li
+                          key={c}
+                          className="rounded-full border border-line bg-ground px-2.5 py-1 text-xs font-medium text-ink/80"
+                        >
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
               </Reveal>
             </li>
           ))}

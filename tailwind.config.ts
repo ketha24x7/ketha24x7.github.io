@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"Instrument Sans"', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'],
-        display: ['"Barlow Condensed"', '"Arial Narrow"', 'Impact', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'Consolas', 'monospace'],
       },
       colors: {
@@ -61,6 +61,8 @@ export default {
           DEFAULT: "hsl(var(--brand))",
           ink: "hsl(var(--brand-ink))",
           tint: "hsl(var(--brand-tint))",
+          violet: "hsl(var(--brand-violet))",
+          cyan: "hsl(var(--brand-cyan))",
         },
         band: {
           DEFAULT: "hsl(var(--band))",
@@ -91,12 +93,17 @@ export default {
           from: { transform: "translateY(14px)" },
           to: { transform: "none" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         marquee: "marquee 48s linear infinite",
         rise: "rise 0.7s cubic-bezier(.2,.7,.2,1) both",
+        float: "float 6s ease-in-out infinite",
       },
     },
   },

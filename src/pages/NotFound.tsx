@@ -25,15 +25,16 @@ const NotFound = () => {
       </header>
 
       <main className="relative flex flex-1 items-center overflow-hidden py-[clamp(48px,10vw,120px)]">
-        <div className="hero-grid pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" />
+        <div className="aurora pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
 
         <div className="container relative grid items-center gap-[clamp(32px,6vw,72px)] lg:grid-cols-[1.1fr_0.9fr]">
           <div className="min-w-0">
             <p className="eyebrow">Error 404</p>
-            <h1 className="display mt-5 text-[clamp(64px,13vw,150px)] leading-[0.85]">
+            <h1 className="display mt-5 text-[clamp(48px,9vw,104px)] leading-[0.95]">
               Page not
               <br />
-              <span className="text-brand">found</span>
+              <span className="text-gradient">found</span>
             </h1>
             <p className="mt-6 max-w-[46ch] text-lg text-muted-foreground">
               The page you were after does not exist, or it has moved. Nothing is broken on your end.
@@ -55,15 +56,15 @@ const NotFound = () => {
           </div>
 
           <nav aria-label="Popular pages" className="min-w-0">
-            <p className="font-mono text-xs uppercase tracking-[0.08em] text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground">
               Try one of these
             </p>
-            <ul className="mt-4 border-t border-line">
+            <ul className="mt-4 grid gap-2.5">
               {links.map((l) => (
                 <li key={l.name}>
                   <a
                     href={l.href}
-                    className="group flex items-center justify-between gap-4 border-b border-line py-4 text-lg font-medium transition-colors hover:text-brand"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-line bg-paper px-5 py-4 text-lg font-medium shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:text-brand-ink"
                   >
                     {l.name}
                     <ArrowRight className="h-4 w-4 flex-none text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-brand" />

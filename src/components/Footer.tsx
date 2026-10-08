@@ -12,11 +12,15 @@ const Footer = () => {
     { name: 'Terms of service', href: company.legal.terms },
   ].filter((l) => l.href);
 
-  const linkCls = 'hover:text-brand-ink';
-  const headCls = 'mb-3.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground';
+  const linkCls = 'text-ink/80 transition-colors hover:text-brand-ink';
+  const headCls = 'mb-4 font-display text-sm font-bold text-ink';
 
   return (
-    <footer className="border-t border-line pb-8 pt-14">
+    <footer className="relative bg-paper pb-8 pt-16">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-violet/60 to-transparent"
+      />
       <div className="container">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="col-span-2 md:col-span-1">
@@ -24,6 +28,9 @@ const Footer = () => {
             <p className="mt-4 max-w-[36ch] text-[15px] text-muted-foreground">
               Transforming businesses through innovative technology. Your trusted partner in digital transformation.
             </p>
+            <a href="#contact" className="btn-primary mt-6 px-4 py-3 text-sm">
+              Start a project
+            </a>
           </div>
 
           <div>

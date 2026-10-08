@@ -27,7 +27,7 @@ const CopyButton = ({ value }: { value: string }) => {
     <button
       type="button"
       onClick={copy}
-      className="rounded-md border border-band-line px-3 py-2 text-[13px] font-medium leading-none text-band-fg hover:border-band-fg"
+      className="rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-[13px] font-medium leading-none text-band-fg transition-colors hover:border-white/40 hover:bg-white/10"
     >
       {label}
     </button>
@@ -61,34 +61,39 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="bg-band py-[clamp(64px,9vw,112px)] text-band-fg">
-      <div className="container grid items-end gap-[clamp(32px,6vw,72px)] lg:grid-cols-[1.1fr_0.9fr]">
+    <section id="contact" className="relative overflow-hidden bg-band py-[clamp(72px,9vw,128px)] text-band-fg">
+      <div className="aurora pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-gradient-to-r from-brand/30 via-brand-violet/30 to-brand-cyan/25 blur-[120px]"
+      />
+
+      <div className="container relative grid items-center gap-[clamp(40px,6vw,80px)] lg:grid-cols-[1.05fr_0.95fr]">
         <div className="min-w-0">
-          <p className="eyebrow text-band-muted">Let's connect</p>
-          <h2 className="display mt-5 text-[clamp(48px,9vw,120px)] [overflow-wrap:anywhere]">
-            Have a project
-            <br />
-            in <span className="text-brand">mind?</span>
+          <p className="eyebrow border-white/15 bg-white/5 text-band-fg">Let's connect</p>
+          <h2 className="display mt-5 text-[clamp(40px,6.4vw,80px)] [overflow-wrap:anywhere]">
+            Have a project in <span className="text-gradient">mind?</span>
           </h2>
           <p className="mt-6 max-w-[46ch] text-lg text-band-muted">
             Ready to turn your idea into reality? Tell us what you're building and we'll get back to you with next
             steps.
           </p>
           {time && (
-            <p className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-band-line px-3.5 py-2 font-mono text-[13px] text-band-muted">
-              Kaduwela <b className="font-medium tabular-nums text-band-fg">{time}</b> UTC+5:30
+            <p className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[13px] text-band-muted backdrop-blur">
+              <i className="h-2 w-2 rounded-full bg-success shadow-[0_0_0_4px_hsl(var(--success)/0.25)]" />
+              Kaduwela <b className="font-semibold tabular-nums text-band-fg">{time}</b> UTC+5:30
             </p>
           )}
         </div>
 
-        <div className="min-w-0">
-          <dl className="border-t border-band-line">
-            {channels.map((c) => (
+        <div className="min-w-0 rounded-3xl border border-white/10 bg-white/[0.04] p-[clamp(20px,3vw,32px)] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+          <dl>
+            {channels.map((c, i) => (
               <div
                 key={c.label}
-                className="grid gap-x-4 gap-y-3 border-b border-band-line py-5 sm:grid-cols-[96px_1fr]"
+                className={`grid gap-x-4 gap-y-3 py-5 sm:grid-cols-[96px_1fr] ${i > 0 ? 'border-t border-white/10' : 'pt-1'}`}
               >
-                <dt className="font-mono text-xs uppercase tracking-[0.08em] text-band-muted sm:pt-1.5">
+                <dt className="text-xs font-semibold uppercase tracking-[0.1em] text-band-muted sm:pt-1.5">
                   {c.label}
                 </dt>
                 <div className="grid gap-2.5">
@@ -99,7 +104,7 @@ const Contact = () => {
                     >
                       <span className="min-w-0 break-words text-[clamp(18px,2vw,22px)] font-medium">
                         {v.href ? (
-                          <a href={v.href} className="hover:text-brand">
+                          <a href={v.href} className="transition-colors hover:text-brand-cyan">
                             {v.text}
                           </a>
                         ) : (
@@ -113,7 +118,10 @@ const Contact = () => {
               </div>
             ))}
           </dl>
-          <a href={`mailto:${company.email}?subject=New%20project%20enquiry`} className="btn-primary group mt-7">
+          <a
+            href={`mailto:${company.email}?subject=New%20project%20enquiry`}
+            className="btn-primary group mt-5 w-full justify-center py-4"
+          >
             Email us
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>

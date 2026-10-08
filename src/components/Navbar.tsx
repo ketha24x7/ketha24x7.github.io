@@ -74,9 +74,9 @@ const Navbar = () => {
                 href={link.href}
                 aria-current={isActive ? 'true' : undefined}
                 className={cn(
-                  'relative rounded-lg px-3.5 py-2 text-[15px] font-medium transition-colors duration-200 motion-reduce:transition-none',
+                  'relative rounded-lg px-3.5 py-2 text-[14.5px] font-medium transition-colors duration-200 motion-reduce:transition-none',
                   isActive
-                    ? 'text-brand-ink'
+                    ? 'bg-brand-tint text-brand-ink'
                     : 'text-muted-foreground hover:bg-ink/[0.04] hover:text-ink dark:hover:bg-white/[0.06]',
                 )}
               >
@@ -84,7 +84,7 @@ const Navbar = () => {
                 <span
                   aria-hidden="true"
                   className={cn(
-                    'absolute inset-x-3.5 -bottom-[1px] h-[2px] origin-center rounded-full bg-brand transition-transform duration-200 motion-reduce:transition-none',
+                    'absolute inset-x-3.5 -bottom-[13px] h-[2px] origin-center rounded-full bg-gradient-to-r from-brand to-brand-violet transition-transform duration-200 motion-reduce:transition-none',
                     isActive ? 'scale-x-100' : 'scale-x-0',
                   )}
                 />
@@ -117,7 +117,7 @@ const Navbar = () => {
           information is already in the scrollbar. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 -bottom-[1px] h-[2px] overflow-hidden">
         <div
-          className="h-full origin-left bg-brand transition-[transform] duration-150 ease-out motion-reduce:transition-none"
+          className="h-full origin-left bg-gradient-to-r from-brand via-brand-violet to-brand-cyan transition-[transform] duration-150 ease-out motion-reduce:transition-none"
           style={{ transform: `scaleX(${progress})` }}
         />
       </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,8 @@
 
 /*
   Ketha24 design system — light first.
-  Brand: ink #0b0d12 and blue #0a66ff from the logo, on a cool light ground.
+  Brand: ink #0b0d12 and blue #0a66ff from the logo, extended into a
+  blue → violet → cyan gradient for highlights, buttons and glows.
   Dark mode is opt-in via the .dark class on <html> (tailwind darkMode: "class"),
   driven by next-themes and defaulting to the visitor's system setting.
 */
@@ -14,19 +15,21 @@
 @layer base {
   :root {
     /* Brand tokens */
-    --ground: 220 18% 97%;
+    --ground: 225 33% 98%;
     --paper: 0 0% 100%;
-    --ink: 223 24% 6%;
-    --ink-muted: 222 11% 36%;
-    --line: 220 18% 90%;
+    --ink: 226 36% 9%;
+    --ink-muted: 224 12% 40%;
+    --line: 224 24% 91%;
     --brand: 217 100% 52%;
     --brand-ink: 217 100% 42%;
-    --brand-tint: 219 100% 95%;
-    --band: 223 24% 6%;
-    --band-fg: 220 18% 97%;
-    --band-muted: 221 12% 68%;
-    --band-line: 222 15% 17%;
-    --success: 146 75% 38%;
+    --brand-tint: 219 100% 96%;
+    --brand-violet: 256 88% 62%;
+    --brand-cyan: 189 94% 43%;
+    --band: 228 45% 7%;
+    --band-fg: 220 25% 97%;
+    --band-muted: 222 16% 70%;
+    --band-line: 226 26% 18%;
+    --success: 152 69% 38%;
 
     /* shadcn/ui tokens mapped onto the brand */
     --background: var(--ground);
@@ -48,21 +51,23 @@
     --border: var(--line);
     --input: var(--line);
     --ring: var(--brand);
-    --radius: 0.75rem;
+    --radius: 0.875rem;
   }
 
   .dark {
-    --ground: 218 22% 7%;
-    --paper: 222 24% 11%;
-    --ink: 220 21% 95%;
-    --ink-muted: 219 11% 64%;
-    --line: 219 19% 18%;
-    --brand-ink: 218 100% 72%;
-    --brand-tint: 220 51% 16%;
-    --band: 220 38% 3%;
-    --band-fg: 220 21% 95%;
-    --band-muted: 219 11% 64%;
-    --band-line: 219 18% 15%;
+    --ground: 228 40% 5%;
+    --paper: 228 30% 9%;
+    --ink: 220 25% 96%;
+    --ink-muted: 222 14% 66%;
+    --line: 226 22% 17%;
+    --brand-ink: 216 100% 72%;
+    --brand-tint: 222 60% 15%;
+    --brand-violet: 256 92% 72%;
+    --brand-cyan: 189 90% 55%;
+    --band: 230 50% 4%;
+    --band-fg: 220 25% 96%;
+    --band-muted: 222 14% 66%;
+    --band-line: 226 24% 15%;
     color-scheme: dark;
   }
 
@@ -77,10 +82,11 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-size: 17px;
-    line-height: 1.6;
+    font-size: 16.5px;
+    line-height: 1.65;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
+    font-feature-settings: 'cv11', 'ss01';
   }
 
   h1, h2, h3 {
@@ -90,7 +96,7 @@
   :focus-visible {
     outline: 2px solid hsl(var(--brand));
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 
   ::selection {
@@ -110,30 +116,34 @@
 }
 
 @layer components {
-  /* Condensed uppercase headlines that echo the wordmark */
+  /* Tight, heavy sentence-case headlines */
   .display {
-    @apply font-display font-bold uppercase;
-    line-height: 0.92;
-    letter-spacing: 0.005em;
+    @apply font-display font-extrabold;
+    line-height: 1.06;
+    letter-spacing: -0.032em;
   }
 
-  /* Mono kicker above section headlines, led by a small blue square */
+  /* Small pill kicker above section headlines */
   .eyebrow {
-    @apply flex items-center gap-2.5 font-mono text-[12.5px] uppercase tracking-[0.08em] text-muted-foreground;
+    @apply inline-flex w-fit items-center gap-2 rounded-full border border-brand/20 bg-brand-tint px-3 py-1 text-[12.5px] font-semibold uppercase tracking-[0.1em] text-brand-ink;
   }
   .eyebrow::before {
     content: '';
-    @apply h-2 w-2 rounded-[2px] bg-brand;
+    @apply h-1.5 w-1.5 rounded-full bg-gradient-to-r from-brand to-brand-violet;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand via-brand-violet to-brand-cyan bg-clip-text text-transparent;
   }
 
   .btn {
-    @apply inline-flex items-center gap-2.5 rounded-md border border-transparent px-5 py-3.5 text-[15px] font-semibold leading-none transition-colors;
+    @apply inline-flex items-center gap-2.5 rounded-xl border border-transparent px-5 py-3.5 text-[15px] font-semibold leading-none transition-all duration-200;
   }
   .btn-primary {
-    @apply btn bg-brand text-white hover:bg-brand/90;
+    @apply btn bg-gradient-to-r from-brand to-brand-violet text-white shadow-[0_10px_30px_-10px_hsl(var(--brand)/0.7)] hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-12px_hsl(var(--brand-violet)/0.8)] motion-reduce:hover:translate-y-0;
   }
   .btn-ghost {
-    @apply btn border-line bg-paper text-ink hover:border-ink;
+    @apply btn border-line bg-paper text-ink shadow-sm hover:-translate-y-0.5 hover:border-brand/40 hover:text-brand-ink motion-reduce:hover:translate-y-0;
   }
 
   /* Hero background grid, faded toward the edges */
@@ -141,20 +151,52 @@
     background-image:
       linear-gradient(hsl(var(--line)) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--line)) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse 70% 60% at 75% 30%, #000 10%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 75% 30%, #000 10%, transparent 75%);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, #000 10%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, #000 10%, transparent 75%);
+  }
+
+  /* Soft colour mesh behind heroes and bands */
+  .aurora {
+    background:
+      radial-gradient(38% 50% at 18% 20%, hsl(var(--brand) / 0.18), transparent 70%),
+      radial-gradient(32% 45% at 85% 15%, hsl(var(--brand-violet) / 0.18), transparent 70%),
+      radial-gradient(35% 45% at 70% 85%, hsl(var(--brand-cyan) / 0.14), transparent 70%);
+  }
+
+  /* Card with a gradient hairline that appears on hover */
+  .card-glow {
+    position: relative;
+    isolation: isolate;
+  }
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--brand)), hsl(var(--brand-violet)), hsl(var(--brand-cyan)));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+  .card-glow:hover::before,
+  .card-glow:focus-within::before {
+    opacity: 1;
   }
 
   /* Scroll reveal. Hidden state only exists when motion is welcome, so
      reduced-motion users (and a JS-less render) always see the final state. */
   @media (prefers-reduced-motion: no-preference) {
     [data-reveal] {
-      transition: opacity 380ms ease-out, transform 380ms ease-out;
+      transition: opacity 500ms ease-out, transform 500ms cubic-bezier(.2,.7,.2,1);
     }
     [data-reveal='hidden'] {
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(20px);
     }
   }
 }
