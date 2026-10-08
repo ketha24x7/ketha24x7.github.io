@@ -145,4 +145,16 @@
     mask-image: radial-gradient(ellipse 70% 60% at 75% 30%, #000 10%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 75% 30%, #000 10%, transparent 75%);
   }
+
+  /* Scroll reveal. Hidden state only exists when motion is welcome, so
+     reduced-motion users (and a JS-less render) always see the final state. */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      transition: opacity 380ms ease-out, transform 380ms ease-out;
+    }
+    [data-reveal='hidden'] {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
 }

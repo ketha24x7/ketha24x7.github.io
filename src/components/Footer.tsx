@@ -29,7 +29,7 @@ const Footer = () => {
           <div>
             <h4 className={headCls}>Services</h4>
             <ul className="grid gap-2 text-[15px]">
-              {services.slice(0, 4).map((s) => (
+              {services.map((s) => (
                 <li key={s.id}>
                   <a href={`#svc-${s.id}`} className={linkCls}>
                     {s.title}
@@ -51,7 +51,19 @@ const Footer = () => {
           <div>
             <h4 className={headCls}>Get in touch</h4>
             <ul className="grid gap-2 text-[15px]">
-              <li><a href={`mailto:${company.email}`} className={linkCls}>{company.email}</a></li>
+              <li>
+                <a href={`mailto:${company.email}`} className={linkCls}>
+                  {company.email}
+                </a>
+              </li>
+              {company.phones.map((phone) => (
+                <li key={phone}>
+                  <a href={`tel:${phone.replace(/[^\d+]/g, '')}`} className={linkCls}>
+                    {phone}
+                  </a>
+                </li>
+              ))}
+              <li className="text-muted-foreground">{company.location}</li>
               {social.map((s) => (
                 <li key={s.name}>
                   <a href={s.href} target="_blank" rel="noopener noreferrer" className={linkCls}>

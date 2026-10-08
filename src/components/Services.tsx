@@ -1,5 +1,6 @@
 import { services } from '@/data/site';
 import SectionHead from './SectionHead';
+import Reveal from './Reveal';
 
 /**
  * Service cards: illustration, then the icon chip overlapping its lower edge,
@@ -23,11 +24,11 @@ const Services = () => {
         />
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ id, icon: Icon, title, description, features, image }) => (
+          {services.map(({ id, icon: Icon, title, description, features, image }, i) => (
+            <Reveal key={id} delay={(i % 3) * 80} className="h-full">
             <article
-              key={id}
               id={`svc-${id}`}
-              className="group flex scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-ink/25 hover:shadow-[0_18px_40px_-24px_rgba(11,13,18,0.45)] focus-within:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="group flex h-full scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-ink/25 hover:shadow-[0_18px_40px_-24px_rgba(11,13,18,0.45)] focus-within:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               <div className="relative">
                 <img
@@ -56,6 +57,7 @@ const Services = () => {
                 </ul>
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
       </div>

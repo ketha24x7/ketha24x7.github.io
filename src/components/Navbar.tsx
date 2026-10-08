@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
+import { useActiveSection } from '@/hooks/use-active-section';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
   { name: 'Services', href: '#services' },
@@ -12,8 +14,12 @@ const navLinks = [
   { name: 'Contact', href: '#contact' },
 ];
 
+// Module-level so the array identity is stable across renders.
+const sectionIds = navLinks.map((l) => l.href.slice(1));
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const active = useActiveSection(sectionIds);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-ground/85 backdrop-blur-md">
@@ -22,16 +28,23 @@ const Navbar = () => {
           <Logo className="h-6" />
         </a>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Main">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-[15px] font-medium text-muted-foreground transition-colors hover:text-ink"
-            >
-              {link.name}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-6 md:flex" aria-label="Main">
+          {navLinks.map((link) => {
+            const isActive = active === link.href.slice(1);
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                aria-current={isActive ? 'true' : undefined}
+                className={cn(
+                  'relative py-1 text-[15px] font-medium transition-colors after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-200 after:content-[""] hover:text-ink hover:after:scale-x-100 motion-reduce:after:transition-none',
+                  isActive ? 'text-ink after:scale-x-100' : 'text-muted-foreground',
+                )}
+              >
+                {link.name}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -55,16 +68,23 @@ const Navbar = () => {
       {open && (
         <nav id="mobile-menu" className="border-t border-line bg-paper md:hidden" aria-label="Mobile">
           <div className="container flex flex-col gap-1 py-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="py-2.5 text-lg font-medium text-ink"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = active === link.href.slice(1);
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive ? 'true' : undefined}
+                  className={cn(
+                    'border-l-2 py-2.5 pl-3 text-lg font-medium transition-colors',
+                    isActive ? 'border-brand text-brand-ink' : 'border-transparent text-ink',
+                  )}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
             <a href="#contact" onClick={() => setOpen(false)} className="btn-primary mt-3 justify-center">
               Get a quote
             </a>

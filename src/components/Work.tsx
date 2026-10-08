@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { projectCategories, projects } from '@/data/site';
 import SectionHead from './SectionHead';
+import Reveal from './Reveal';
 
 /**
  * Project grid with category filtering.
@@ -60,8 +61,9 @@ const Work = () => {
         </p>
 
         <ul className="grid gap-x-7 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-          {shown.map(({ slug, category, title, client, summary, capabilities, image }) => (
-            <li key={slug}>
+          {shown.map(({ slug, category, title, client, summary, capabilities, image }, i) => (
+            <li key={slug} className="h-full">
+              <Reveal delay={(i % 3) * 80} className="h-full">
               <article className="group flex h-full min-w-0 flex-col">
                 <div className="overflow-hidden rounded-xl border border-line bg-ground">
                   <img
@@ -93,6 +95,7 @@ const Work = () => {
                   ))}
                 </ul>
               </article>
+              </Reveal>
             </li>
           ))}
         </ul>
