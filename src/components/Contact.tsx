@@ -42,10 +42,22 @@ const Contact = () => {
     return () => clearInterval(id);
   }, []);
 
+  // Each channel can carry more than one value (we list two phone numbers),
+  // so every value gets its own link and copy button under a single label.
   const channels = [
-    { label: 'Email', value: company.email, href: `mailto:${company.email}`, copy: true },
-    { label: 'Phone', value: company.phone, href: `tel:${company.phone.replace(/\s/g, '')}`, copy: true },
-    { label: 'Location', value: company.location },
+    {
+      label: 'Email',
+      values: [{ text: company.email, href: `mailto:${company.email}`, copy: true }],
+    },
+    {
+      label: 'Phone',
+      values: company.phones.map((p) => ({
+        text: p,
+        href: `tel:${p.replace(/[^\d+]/g, '')}`,
+        copy: true,
+      })),
+    },
+    { label: 'Location', values: [{ text: company.location, href: undefined, copy: false }] },
   ];
 
   return (
@@ -74,21 +86,30 @@ const Contact = () => {
             {channels.map((c) => (
               <div
                 key={c.label}
-                className="grid grid-cols-[1fr_auto] items-center gap-4 border-b border-band-line py-5 sm:grid-cols-[96px_1fr_auto]"
+                className="grid gap-x-4 gap-y-3 border-b border-band-line py-5 sm:grid-cols-[96px_1fr]"
               >
-                <dt className="col-span-2 font-mono text-xs uppercase tracking-[0.08em] text-band-muted sm:col-span-1">
+                <dt className="font-mono text-xs uppercase tracking-[0.08em] text-band-muted sm:pt-1.5">
                   {c.label}
                 </dt>
-                <dd className="min-w-0 break-words text-[clamp(18px,2vw,22px)] font-medium">
-                  {c.href ? (
-                    <a href={c.href} className="hover:text-brand">
-                      {c.value}
-                    </a>
-                  ) : (
-                    c.value
-                  )}
-                </dd>
-                <dd>{c.copy && <CopyButton value={c.value} />}</dd>
+                <div className="grid gap-2.5">
+                  {c.values.map((v) => (
+                    <dd
+                      key={v.text}
+                      className="grid grid-cols-[1fr_auto] items-center gap-4"
+                    >
+                      <span className="min-w-0 break-words text-[clamp(18px,2vw,22px)] font-medium">
+                        {v.href ? (
+                          <a href={v.href} className="hover:text-brand">
+                            {v.text}
+                          </a>
+                        ) : (
+                          v.text
+                        )}
+                      </span>
+                      {v.copy && <CopyButton value={v.text} />}
+                    </dd>
+                  ))}
+                </div>
               </div>
             ))}
           </dl>

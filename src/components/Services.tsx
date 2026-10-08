@@ -1,6 +1,11 @@
 import { services } from '@/data/site';
 import SectionHead from './SectionHead';
 
+/**
+ * Service cards: illustration, then the icon chip overlapping its lower edge,
+ * then copy. Cards are separate surfaces rather than cells in a shared border
+ * grid — with artwork in each one, the old grid lines read as a table.
+ */
 const Services = () => {
   return (
     <section id="services" className="py-[clamp(64px,9vw,120px)]">
@@ -17,25 +22,39 @@ const Services = () => {
           intro="Complete IT solutions shaped around your business, from the first website to the data and AI systems that run behind it."
         />
 
-        <div className="grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ id, icon: Icon, title, description, features }) => (
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map(({ id, icon: Icon, title, description, features, image }) => (
             <article
               key={id}
               id={`svc-${id}`}
-              className="flex min-w-0 scroll-mt-24 flex-col gap-3.5 border-b border-r border-line bg-ground px-7 pb-[30px] pt-8 transition-colors hover:bg-paper target:bg-paper"
+              className="group flex scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-line bg-paper transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-ink/25 hover:shadow-[0_18px_40px_-24px_rgba(11,13,18,0.45)] focus-within:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
-              <div className="grid h-11 w-11 place-items-center rounded-[10px] bg-brand-tint text-brand">
-                <Icon className="h-[22px] w-[22px]" strokeWidth={1.8} />
+              <div className="relative">
+                <img
+                  src={image}
+                  alt=""
+                  width={1600}
+                  height={900}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-video w-full object-cover"
+                />
+                <span className="absolute -bottom-6 left-6 grid h-12 w-12 place-items-center rounded-xl border border-line bg-paper text-brand shadow-sm">
+                  <Icon className="h-[22px] w-[22px]" strokeWidth={1.8} aria-hidden="true" />
+                </span>
               </div>
-              <h3 className="display mt-2 text-[32px] leading-none">{title}</h3>
-              <p className="text-base text-muted-foreground">{description}</p>
-              <ul className="mt-auto flex flex-wrap gap-1.5 pt-2">
-                {features.map((f) => (
-                  <li key={f} className="rounded border border-line bg-paper px-2.5 py-1 font-mono text-xs">
-                    {f}
-                  </li>
-                ))}
-              </ul>
+
+              <div className="flex flex-1 flex-col gap-3.5 px-6 pb-7 pt-10">
+                <h3 className="display text-[30px] leading-none">{title}</h3>
+                <p className="text-[15px] text-muted-foreground">{description}</p>
+                <ul className="mt-auto flex flex-wrap gap-1.5 pt-3">
+                  {features.map((f) => (
+                    <li key={f} className="rounded border border-line bg-ground px-2.5 py-1 font-mono text-xs">
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </article>
           ))}
         </div>

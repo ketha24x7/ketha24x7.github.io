@@ -17,7 +17,7 @@ const StructuredData = () => {
       image: `${SITE_URL}/og.png`,
       logo: `${SITE_URL}/icon-512.png`,
       email: company.email,
-      telephone: company.phone,
+      telephone: company.phones,
       description:
         'Ketha24 builds web platforms, mobile apps, cloud systems and AI solutions for businesses, from Kaduwela, Sri Lanka.',
       address: {
