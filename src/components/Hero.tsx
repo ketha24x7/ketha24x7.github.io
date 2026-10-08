@@ -9,7 +9,7 @@ const Hero = () => {
 
       <div className="container relative grid items-center gap-[clamp(32px,5vw,64px)] lg:grid-cols-[1.15fr_0.85fr]">
         <div className="min-w-0 [&>*]:animate-rise">
-          <p className="eyebrow">Next-Gen IT Solutions · Kaduwela, Sri Lanka</p>
+          <p className="eyebrow">Next-Gen IT Solutions</p>
 
           <h1 className="display mt-6 text-[clamp(48px,9vw,112px)] [overflow-wrap:anywhere] [animation-delay:60ms]">
             Transforming ideas into <span className="text-brand">digital reality</span>
