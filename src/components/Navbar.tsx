@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { name: 'Services', href: '#services' },
@@ -32,6 +33,7 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle className="hidden sm:flex" />
           <a href="#contact" className="btn-primary hidden px-4 py-3 text-sm sm:inline-flex">
             Get a quote
           </a>
@@ -64,6 +66,7 @@ const Navbar = () => {
             <a href="#contact" onClick={() => setOpen(false)} className="btn-primary mt-3 justify-center">
               Get a quote
             </a>
+            <ThemeToggle className="mt-3 self-start sm:hidden" />
           </div>
         </nav>
       )}

@@ -7,7 +7,8 @@
 /*
   Ketha24 design system — light first.
   Brand: ink #0b0d12 and blue #0a66ff from the logo, on a cool light ground.
-  Dark mode follows the visitor's system setting (tailwind darkMode: "media").
+  Dark mode is opt-in via the .dark class on <html> (tailwind darkMode: "class"),
+  driven by next-themes and defaulting to the visitor's system setting.
 */
 
 @layer base {
@@ -50,21 +51,19 @@
     --radius: 0.75rem;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ground: 218 22% 7%;
-      --paper: 222 24% 11%;
-      --ink: 220 21% 95%;
-      --ink-muted: 219 11% 64%;
-      --line: 219 19% 18%;
-      --brand-ink: 218 100% 72%;
-      --brand-tint: 220 51% 16%;
-      --band: 220 38% 3%;
-      --band-fg: 220 21% 95%;
-      --band-muted: 219 11% 64%;
-      --band-line: 219 18% 15%;
-      color-scheme: dark;
-    }
+  .dark {
+    --ground: 218 22% 7%;
+    --paper: 222 24% 11%;
+    --ink: 220 21% 95%;
+    --ink-muted: 219 11% 64%;
+    --line: 219 19% 18%;
+    --brand-ink: 218 100% 72%;
+    --brand-tint: 220 51% 16%;
+    --band: 220 38% 3%;
+    --band-fg: 220 21% 95%;
+    --band-muted: 219 11% 64%;
+    --band-line: 219 18% 15%;
+    color-scheme: dark;
   }
 
   * {
