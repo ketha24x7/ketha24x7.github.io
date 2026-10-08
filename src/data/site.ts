@@ -301,17 +301,6 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-// TODO: replace with real client names — only those who have agreed to be
-// listed. Shown as wordmarks; swap for SVG logos when you have them.
-export const clients = [
-  'Client One',
-  'Client Two',
-  'Client Three',
-  'Client Four',
-  'Client Five',
-  'Client Six',
-];
-
 export type FaqItem = { q: string; a: string };
 
 // TODO: check each answer matches how you actually work and quote.
