@@ -22,7 +22,7 @@ export const company = {
 };
 
 export const stats = [
-  { value: '50+', label: 'Projects delivered' },
+  { value: '10+', label: 'Projects delivered' },
   { value: '40+', label: 'Happy clients' },
   { value: '5+', label: 'Years of experience' },
 ];
@@ -96,9 +96,8 @@ export const services: Service[] = [
 
 export const techs = [
   'React', 'Next.js', 'Angular', 'TypeScript', 'Node.js', 'Python',
-  'NestJS', 'FastAPI', 'AWS', 'Azure', 'Docker', 'Kubernetes',
-  'GraphQL', 'PostgreSQL', 'MySQL', 'MariaDB', 'React Native',
-  'Flutter', 'TensorFlow', 'Rust', 'Go', 'Redis', 'Terraform',
+  'NestJS', 'FastAPI', 'AWS', 'Azure', 'Docker',
+  'GraphQL', 'PostgreSQL', 'MySQL', 'MariaDB', 'React Native', 
   'Tailwind CSS', 'Supabase',
 ];
 
@@ -120,7 +119,7 @@ export const values = [
 ];
 
 export const highlights = [
-  { key: '50+', title: 'Proven results', text: 'Successful projects delivered across many industries.' },
+  { key: '10+', title: 'Proven results', text: 'Successful projects delivered across many industries.' },
   { key: 'Agile', title: 'Agile approach', text: 'Rapid iterations and continuous delivery for faster time-to-market.' },
   { key: 'Team', title: 'Expert team', text: 'Skilled developers, designers and strategists dedicated to your success.' },
 ];
