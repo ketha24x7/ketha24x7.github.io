@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
+  darkMode: "media",
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+        sans: ['"Instrument Sans"', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'],
+        display: ['"Barlow Condensed"', '"Arial Narrow"', 'Impact', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'Menlo', 'Consolas', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,15 +52,21 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        glow: {
-          primary: "hsl(var(--glow-primary))",
-          secondary: "hsl(var(--glow-secondary))",
+        ground: "hsl(var(--ground))",
+        paper: "hsl(var(--paper))",
+        ink: "hsl(var(--ink))",
+        line: "hsl(var(--line))",
+        success: "hsl(var(--success))",
+        brand: {
+          DEFAULT: "hsl(var(--brand))",
+          ink: "hsl(var(--brand-ink))",
+          tint: "hsl(var(--brand-tint))",
         },
-        neon: {
-          blue: "hsl(var(--neon-blue))",
-          cyan: "hsl(var(--neon-cyan))",
-          violet: "hsl(var(--neon-violet))",
-          pink: "hsl(var(--neon-pink))",
+        band: {
+          DEFAULT: "hsl(var(--band))",
+          fg: "hsl(var(--band-fg))",
+          muted: "hsl(var(--band-muted))",
+          line: "hsl(var(--band-line))",
         },
       },
       borderRadius: {
@@ -76,49 +83,20 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        pulse: {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
-        },
-        "grid-flow": {
-          "0%": { transform: "translateY(0)" },
-          "100%": { transform: "translateY(-50%)" },
-        },
-        aurora: {
-          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "33%": { transform: "translate(40px, -30px) scale(1.1)" },
-          "66%": { transform: "translate(-30px, 20px) scale(0.95)" },
-        },
-        "glow-pulse": {
-          "0%, 100%": { opacity: "0.6", transform: "scale(1)" },
-          "50%": { opacity: "1", transform: "scale(1.05)" },
-        },
-        "spin-slow": {
-          to: { transform: "rotate(360deg)" },
-        },
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        rise: {
+          from: { transform: "translateY(14px)" },
+          to: { transform: "none" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        float: "float 6s ease-in-out infinite",
-        pulse: "pulse 4s ease-in-out infinite",
-        "grid-flow": "grid-flow 20s linear infinite",
-        aurora: "aurora 18s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        "spin-slow": "spin-slow 24s linear infinite",
-        marquee: "marquee 32s linear infinite",
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-gradient': 'linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, transparent 50%)',
+        marquee: "marquee 48s linear infinite",
+        rise: "rise 0.7s cubic-bezier(.2,.7,.2,1) both",
       },
     },
   },
