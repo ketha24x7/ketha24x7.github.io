@@ -6,9 +6,9 @@ import { Globe, Smartphone, Cloud, Cpu, Database, ShieldCheck, type LucideIcon }
 */
 export const company = {
   name: 'Ketha24',
-  email: 'hello@ketha24.com',
+  email: 'ketha24x7@gmail.com',
   // TODO: replace with the real phone number (this one came from the old site and looks like a placeholder)
-  phone: '+94 77 123 4567',
+  phone: '+94 77 109 1391',
   location: 'Kaduwela, Sri Lanka',
   timeZone: 'Asia/Colombo',
   social: {
@@ -23,8 +23,8 @@ export const company = {
 
 export const stats = [
   { value: '10+', label: 'Projects delivered' },
-  { value: '40+', label: 'Happy clients' },
-  { value: '5+', label: 'Years of experience' },
+  { value: '6+', label: 'Happy clients' },
+  { value: '2+', label: 'Years of experience' },
 ];
 
 export type Service = {
@@ -54,7 +54,7 @@ export const services: Service[] = [
     title: 'Mobile Apps',
     description: 'Native and cross-platform apps for iOS and Android with polished, intuitive UI/UX.',
     features: ['iOS development', 'Android apps', 'Cross-platform'],
-    stack: ['React Native', 'Flutter', 'TypeScript', 'Supabase'],
+    stack: ['React Native', 'TypeScript', 'Supabase'],
   },
   {
     id: 'cloud',
@@ -63,16 +63,16 @@ export const services: Service[] = [
     title: 'Cloud & IT Strategy',
     description: 'Cloud infrastructure setup, migration and strategic IT consulting for your business.',
     features: ['AWS / Azure / GCP', 'DevOps', 'Consulting'],
-    stack: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'Terraform'],
+    stack: ['AWS', 'Azure', 'Docker'],
   },
   {
     id: 'ai',
     icon: Cpu,
     chip: 'AI & automation',
     title: 'AI Driven Solutions',
-    description: 'Machine learning and generative AI that automate workflows, sharpen decisions and give you an edge.',
-    features: ['ML pipelines', 'Generative AI', 'Automation'],
-    stack: ['Python', 'TensorFlow', 'FastAPI', 'PostgreSQL'],
+    description: 'Generative AI that automate workflows, sharpen decisions and give you an edge.',
+    features: ['AI integration', 'Generative AI', 'Automation'],
+    stack: ['Node.js','Python', 'FastAPI', 'PostgreSQL'],
   },
   {
     id: 'data',
@@ -81,7 +81,7 @@ export const services: Service[] = [
     title: 'Data Solutions',
     description: 'Data architecture, analytics pipelines and business intelligence dashboards.',
     features: ['Analytics', 'BI dashboards', 'Data engineering'],
-    stack: ['PostgreSQL', 'MySQL', 'Redis', 'Python', 'GraphQL'],
+    stack: ['PostgreSQL', 'MySQL', 'DynamoDB', 'MongoDB', 'GraphQL'],
   },
   {
     id: 'security',
