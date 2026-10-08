@@ -27,7 +27,7 @@ const Testimonials = () => {
         <ul className="grid gap-5 md:grid-cols-3">
           {testimonials.map(({ quote, name, role, company }, i) => (
             <li key={i} className="flex min-w-0">
-              <figure className="flex flex-col gap-6 rounded-xl border border-line bg-paper p-7">
+              <figure className="flex h-full w-full min-w-0 flex-col gap-6 rounded-xl border border-line bg-paper p-7">
                 <span aria-hidden="true" className="font-display text-5xl leading-[0.6] text-brand">
                   &ldquo;
                 </span>

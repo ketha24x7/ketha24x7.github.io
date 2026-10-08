@@ -25,7 +25,7 @@ export const company = {
 export const stats = [
   { value: '10+', label: 'Projects delivered' },
   { value: '6+', label: 'Happy clients' },
-  { value: '2+', label: 'Years of experience' },
+  { value: '5+', label: 'Years of experience' },
 ];
 
 export type Service = {
